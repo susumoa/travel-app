@@ -17,10 +17,10 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('src/client'));
+app.use(express.static('dist'));
 
 // Setup Server
-const port = 8000;
+const port = 8080;
 const server = app.listen(port, () => {
   console.log(`Running on localhost: ${port}`);
 });
