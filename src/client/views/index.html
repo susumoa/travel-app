@@ -10,21 +10,27 @@
       <div class="holder headline">
         Travel App
       </div>
-      <div class="holder zip">
-        <label for="zip">Enter Zipcode here</label>
-        <input type="text" id="zip" placeholder="Enter zipcode here" />
+      <div class="holder start-date-input">
+        <label for="start-date-input">Enter start date: </label>
+        <input type="text" id="start-date-input" placeholder="DD/MM/YYYY" />
       </div>
-      <div class="holder feel">
-        <label for="feelings">How are you feeling today?</label>
-        <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="3" cols="50"></textarea>
+      <div class="holder end-date-input">
+        <label for="end-date-input">Enter end date: </label>
+        <input type="text" id="end-date-input" placeholder="DD/MM/YYYY" />
+      </div>
+      <div class="holder destination-input">
+        <label for="destination-input">Enter travel destination: </label>
+        <input class="myInput" id="destination-input" placeholder="Destination" />
         <button id="generate" type="submit">Generate</button>
       </div>
       <div class="holder entry">
-        <div class="title">Most Recent Entry</div>
+        <div class="title">Forecast</div>
         <div id="entryHolder">
-          <div id="date"></div>
-          <div id="temp"></div>
-          <div id="content"></div>
+          <div id="start-date"></div>
+          <div id="end-date"></div>
+          <div id="destination"></div>
+          <div id="trip-length"></div>
+          <div id="forecast"></div>
         </div>
       </div>
     </div>
