@@ -8,7 +8,7 @@ let newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`;
 // Add event listener to button
 document.getElementById('generate').addEventListener('click', performAction);
 
-function performAction(e) {
+export const performAction = (e) => {
   const zip = document.getElementById('zip').value;
   const userFeel = document.getElementById('feelings').value;
   if (zip === '') {
@@ -23,7 +23,7 @@ function performAction(e) {
       })
       .then(() => updateUI());
   }
-}
+};
 
 const getWeatherInfo = async (url) => {
   const res = await fetch(url);
