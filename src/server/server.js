@@ -1,5 +1,4 @@
-// Setup empty JS array to act as endpoint for all routes
-projectData = [];
+const path = require('path');
 
 // Require Express to run server and routes
 const express = require('express');
@@ -18,7 +17,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('src/client'));
 
 // Setup Server
 const port = 8000;
@@ -27,8 +26,8 @@ const server = app.listen(port, () => {
 });
 
 // GET route
-app.get('/all', (req, res) => {
-  res.send(projectData);
+app.get('/', (req, res) => {
+  res.sendFile('/client/views/index.html', { root: __dirname + '/..' });
 });
 
 // POST route
@@ -40,5 +39,4 @@ app.post('/add', (req, res) => {
     userResponse: newData.userResponse,
   };
   console.log('newEntry: ', newEntry);
-  projectData.push(newEntry);
 });

@@ -17,7 +17,7 @@ This is the last project for Udacity's Front End Developer Nanodegree Program, a
   ```
 - run `npm run build-prod`
 - start the server with `npm run start`
-- open `localhost:8080` in your browser
+- open `localhost:8000` in your browser
 
 ## How to use
 
