@@ -10,22 +10,28 @@
       <div class="holder headline">
         Travel App
       </div>
-      <div class="holder start-date-input">
-        <label for="start-date-input">Enter start date: </label>
-        <input type="text" id="start-date-input" placeholder="DD/MM/YYYY" />
-      </div>
-      <div class="holder end-date-input">
-        <label for="end-date-input">Enter end date: </label>
-        <input type="text" id="end-date-input" placeholder="DD/MM/YYYY" />
-      </div>
-      <div class="holder destination-input">
-        <label for="destination-input">Enter travel destination: </label>
-        <input class="myInput" id="destination-input" placeholder="Destination" />
-        <button id="generate" type="submit">Generate</button>
-      </div>
+
+      <form onsubmit="return Client.handleSubmit(event)">
+        <div class="holder start-date-input">
+          <label for="start-date-input">Enter start date: </label>
+          <input type="text" id="start-date-input" placeholder="DD/MM/YYYY" />
+        </div>
+        <div class="holder end-date-input">
+          <label for="end-date-input">Enter end date: </label>
+          <input type="text" id="end-date-input" placeholder="DD/MM/YYYY" />
+        </div>
+        <div class="holder destination-input">
+          <label for="destination-input">Enter travel destination: </label>
+          <input class="myInput" id="destination-input" placeholder="Destination" />
+          <button id="sumbit" type="submit" onsubmit="return Client.handleSubmit(event)" onclick="return Client.handleSubmit(event)">
+            Give me a forecast
+          </button>
+        </div>
+      </form>
+
       <div class="holder entry">
         <div class="title">Forecast</div>
-        <div id="entryHolder">
+        <div id="travel-info">
           <div id="start-date"></div>
           <div id="end-date"></div>
           <div id="destination"></div>

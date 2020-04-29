@@ -1,6 +1,6 @@
 body {
   background: #fffff8;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #app {
@@ -14,7 +14,7 @@ body {
   color: #120136;
   /* grid-gap: 1em; */
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .holder {
@@ -26,15 +26,14 @@ body {
   background: #f6f578;
 }
 
-#date {
+#start-date,
+#end-date,
+#destination,
+#trip-length {
   color: #120136;
 }
 
-#temp {
-  color: #120136;
-}
-
-#content {
+#forecast {
   color: #120136;
 }
 
@@ -60,7 +59,7 @@ input {
   background: #40bad5;
   color: #120136;
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   border: none;
   padding: 10px;
 }
@@ -71,7 +70,7 @@ button {
   background: #035aa6;
   color: #120136;
   font-size: 26px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   border: none;
   box-shadow: 2px 4px 5px #444;
   display: grid;
@@ -81,15 +80,6 @@ button {
 
 h1 {
   font-size: 36px;
-}
-
-textarea {
-  width: 400px;
-  background: #40bad5;
-  color: #120136;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  padding: 10px;
 }
 
 /* Reset style for HTML element on active to have no border*/
@@ -104,17 +94,17 @@ button:focus {
 ::placeholder {
   /* Firefox, Chrome, Opera */
   color: #120136;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #120136;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #120136;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }

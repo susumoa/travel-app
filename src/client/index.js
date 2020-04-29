@@ -1,5 +1,7 @@
-alert('I exist');
+import { handleSubmit } from './js/app';
 
-import { performAction } from './js/app';
+alert('Hello');
 
 import './styles/style.scss';
+
+export { handleSubmit };

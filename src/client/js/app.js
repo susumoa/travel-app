@@ -1,28 +1,33 @@
 // TODO: secure API KEY
-const apiKEY = '6ea07127874f269c4d510bfca0c2bab4';
+const apiKEY = '*************************';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`;
 
 // Add event listener to button
-document.getElementById('generate').addEventListener('click', performAction);
+// document.getElementById('sumbit').addEventListener('click', handleSubmit);
 
-export const performAction = (e) => {
-  const zip = document.getElementById('zip').value;
-  const userFeel = document.getElementById('feelings').value;
-  if (zip === '') {
-    alert('Please provide a zip code');
-  } else if (userFeel === '') {
-    alert('Please provide your feelings');
-  } else {
-    getWeatherInfo(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKEY}`)
-      .then((data) => {
-        const temp = Math.round(data.main.temp);
-        postData('/add', { temperature: temp, date: newDate, userResponse: userFeel });
-      })
-      .then(() => updateUI());
-  }
+export const handleSubmit = (e) => {
+  e.preventDefault();
+
+  alert('Clicked');
+
+  // const startDateInput = document.getElementById('start-date-input').value;
+  // const endDateInput = document.getElementById('end-date-input').value;
+  // const destinationInput = document.getElementById('destination-input').value;
+  // if (zip === '') {
+  //   alert('Please provide a zip code');
+  // } else if (userFeel === '') {
+  //   alert('Please provide your feelings');
+  // } else {
+  //   getWeatherInfo(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKEY}`)
+  //     .then((data) => {
+  //       const temp = Math.round(data.main.temp);
+  //       postData('/add', { temperature: temp, date: newDate, userResponse: userFeel });
+  //     })
+  //     .then(() => updateUI());
+  // }
 };
 
 const getWeatherInfo = async (url) => {
