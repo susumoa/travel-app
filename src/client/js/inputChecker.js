@@ -12,7 +12,7 @@ export const dateChecker = (date) => {
 
 export const dateConverter = (date) => {
   const day = parseInt(date.split('/')[0]);
-  const month = parseInt(date.split('/')[1]);
+  const month = parseInt(date.split('/')[1]) - 1;
   const year = parseInt(date.split('/')[2]);
   const newDate = new Date(year, month, day);
   console.log(newDate);
