@@ -11,7 +11,7 @@
         Travel App
       </div>
 
-      <form onsubmit="return Client.handleSubmit(event)">
+      <form>
         <div class="holder start-date-input">
           <label for="start-date-input">Enter start date: </label>
           <input type="text" id="start-date-input" placeholder="DD/MM/YYYY" />
@@ -23,13 +23,13 @@
         <div class="holder destination-input">
           <label for="destination-input">Enter travel destination: </label>
           <input class="myInput" id="destination-input" placeholder="Destination" />
-          <button id="sumbit" type="submit" onsubmit="return Client.handleSubmit(event)" onclick="return Client.handleSubmit(event)">
+          <button id="sumbit" type="submit">
             Give me a forecast
           </button>
         </div>
       </form>
 
-      <div class="choose-city">
+      <div class="holder choose-city">
         <div>Choose one:</div>
         <ul id="city-list"></ul>
       </div>

@@ -38,7 +38,7 @@ app.post('/add', (req, res) => {
 
 // GET route
 app.get('/all', (req, res) => {
-  console.log(cityData);
+  // console.log(cityData);
   res.send(cityData);
 });
 

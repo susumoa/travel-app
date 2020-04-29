@@ -9,7 +9,6 @@ body {
   /* grid-template-columns:  */
   flex-direction: column;
   justify-content: flex-start;
-  height: 100vh;
   background: #fcbf1e;
   color: #120136;
   /* grid-gap: 1em; */
@@ -78,8 +77,18 @@ button {
   margin-top: 12px;
 }
 
+button:hover {
+  background: #2d72ad;
+}
+
 h1 {
   font-size: 36px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 10px 0 0;
+  padding: 0;
 }
 
 /* Reset style for HTML element on active to have no border*/

@@ -1,17 +1,14 @@
 const username = 'susumoa';
 
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`;
-
-// Add event listener to button
-// document.getElementById('sumbit').addEventListener('click', handleSubmit);
+// Add event listeners
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.getElementById('sumbit').addEventListener('click', handleSubmit);
+  document.getElementById('city-list').addEventListener('click', chooseDestinationCity);
+});
 
 export const handleSubmit = (e) => {
   e.preventDefault();
 
-  const startDateInput = document.getElementById('start-date-input').value;
-  const endDateInput = document.getElementById('end-date-input').value;
   const destinationInput = document.getElementById('destination-input').value;
 
   getCityInfo(`http://api.geonames.org/searchJSON?q=${destinationInput}&maxRows=10&username=${username}`)
@@ -33,7 +30,7 @@ const getCityInfo = async (url) => {
       return data;
     }
   } catch (err) {
-    console.log('Error in getWeatherInfo: ', err);
+    console.log('Error in getCityInfo: ', err);
   }
 };
 
@@ -61,28 +58,19 @@ const firstUIUpdate = async () => {
   try {
     const allData = await req.json();
     // console.log('all data: ', allData);
-    createCityList(allData);
-    // const lastEntry = allData.length - 1;
-    // document.getElementById('date').innerHTML = `Date: ${allData[lastEntry].date}`;
-    // document.getElementById('temp').innerHTML = `Temperature: ${allData[lastEntry].temperature}ºF`;
-    // document.getElementById('content').innerHTML = `Feelings: ${allData[lastEntry].userResponse}`;
+    Client.createCityList(allData);
   } catch (error) {
-    console.log('error in updating UI', error);
+    console.log('error in firstUIUpdate', error);
   }
 };
 
-const createCityList = (data) => {
-  const cityList = data.geonames;
-
-  const fragment = document.createDocumentFragment(); // ← uses a DocumentFragment
-
-  for (let i = 0; i < cityList.length; i++) {
-    const newElement = document.createElement('li');
-    const city = data.geonames[i].name;
-    const country = data.geonames[i].countryName;
-    newElement.innerText = `${city}, ${country}`;
-
-    fragment.appendChild(newElement);
+export const chooseDestinationCity = (e) => {
+  e.preventDefault();
+  const startDateInput = document.getElementById('start-date-input').value;
+  const endDateInput = document.getElementById('end-date-input').value;
+  const destinationId = event.target.id;
+  if (destinationId !== 'city-list') {
+    console.log(destinationId);
+    return destinationId;
   }
-  document.getElementById('city-list').appendChild(fragment); // reflow and repaint here -- once!
 };
