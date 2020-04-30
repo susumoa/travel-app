@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="app">
-      <div class="holder headline">
+      <h1 class="holder headline">
         Travel App
       </div>
 
@@ -30,24 +30,26 @@
       </form>
 
       <div hidden id="choose-city" class="holder choose-city">
-        <div>Choose one:</div>
+        <h2>Choose one:</h2>
         <ul id="city-list"></ul>
       </div>
 
       <div hidden id="forecast-info" class="holder entry">
-        <div class="title">Forecast</div>
+        <h2>Journey</h2>
         <div id="travel-info">
           <label for="start-date">Start date: </label>
-          <div id="start-date"></div>
+          <p id="start-date"></p>
           <label for="end-date">End date: </label>
-          <div id="end-date"></div>
+          <p id="end-date"></p>
           <label for="destination">Destination: </label>
-          <div id="destination"></div>
+          <p id="destination"></p>
           <label for="trip-length">Trip length: </label>
-          <div id="trip-length"></div>
-          <label for="forecast">Forecast: </label>
-          <img id="weather-icon" />
-          <div id="forecast"></div>
+          <p id="trip-length"></p>
+          <div class="forecast-info">
+            <h3>Forecast: </h3>
+            <img id="weather-icon" />
+            <p id="forecast"></p>
+          </div>
         </div>
       </div>
     </div>
