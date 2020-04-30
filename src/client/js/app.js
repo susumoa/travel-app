@@ -23,6 +23,9 @@ export const handleSubmit = (e) => {
   } else if (destinationInput.trim() === '') {
     alert('Please enter a city name');
   } else {
+    // Geonames:
+    // http://api.geonames.org/searchJSON?q=london&maxRows=10&username=susumoa
+
     getCityInfo(`http://api.geonames.org/searchJSON?q=${destinationInput}&maxRows=10&username=${username}`)
       .then((cities) => {
         postData(cities);
@@ -85,6 +88,13 @@ export const chooseDestinationCity = (e) => {
   const destinationId = event.target.id;
   if (destinationId !== 'city-list') {
     console.log(destinationId);
-    return destinationId;
+    postWeatherData(destinationId);
   }
+};
+
+export const postWeatherData = async function (destinationId) {
+  const apiUrl = `http://localhost:8080/weather/${destinationId}`;
+  const response = await fetch(apiUrl);
+  const json = await response.json();
+  console.log(json);
 };
