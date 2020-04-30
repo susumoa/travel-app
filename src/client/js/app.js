@@ -96,6 +96,8 @@ export const chooseDestinationCity = (e) => {
       })
       .then(() => {
         document.getElementById('choose-city').setAttribute('hidden', '');
+        const deleteListElements = document.querySelector('ul');
+        deleteListElements.innerHTML = '';
         Client.updateUIWithForecast({ start: startDateInput, end: endDateInput, length: daysBetweenDates, weatherData: weeatherData });
       });
   }
