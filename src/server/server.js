@@ -1,9 +1,11 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 let cityData = {};
+const weatherAPI = process.env.API_KEY;
 
 // Start up an instance of app
 const app = express();
