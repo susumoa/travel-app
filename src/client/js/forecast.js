@@ -1,5 +1,5 @@
 export const updateUIWithForecast = (data) => {
-  const { start, end, length, weatherData } = data;
+  const { start, end, length, weatherData, imgData } = data;
   document.getElementById('forecast-info').removeAttribute('hidden');
 
   // console.log(start, end, length, weatherData);
@@ -7,6 +7,16 @@ export const updateUIWithForecast = (data) => {
   const startDateForApi = `${start.split('/')[2]}-${start.split('/')[1]}-${start.split('/')[0]}`;
   const today = new Date();
   const todayForConverter = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+
+  if (imgData) {
+    document.getElementById('destination-img').src = imgData.webformatURL;
+    document.getElementById('destination-img').alt = `${imgData.tags} image`;
+    // document.getElementById('destination-img').srcset = 'https://pixabay.com/get/57e7d0454855a814f1dc84609629317d143dd7ed544c704c7d2779dc934fcc59_640.jpg';
+  } else {
+    document.getElementById('destination-img').src =
+      'https://pixabay.com/get/57e7d0454855a814f1dc84609629317d143dd7ed544c704c7d2779dc934fcc59_640.jpg';
+    document.getElementById('destination-img').alt = 'image of earth';
+  }
 
   document.getElementById('start-date').innerHTML = start;
   document.getElementById('end-date').innerHTML = end;

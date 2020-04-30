@@ -7,7 +7,8 @@ const fetch = require('node-fetch');
 
 // Global variables
 let cityData = {};
-const weatherAPIKey = process.env.API_KEY;
+const weatherAPIKey = process.env.WEATHER_API_KEY;
+const imgAPIKey = process.env.IMG_API_KEY;
 
 // Start up an instance of app
 const app = express();
@@ -49,7 +50,7 @@ app.get('/weather/:destinationId', async (req, res) => {
   const geonamesData = cityData.geonames;
 
   for (let i = 0; i < geonamesData.length; i++) {
-    console.log(`i: `, i);
+    // console.log(`i: `, i);
     if (geonamesData[i].geonameId === id) {
       lat = geonamesData[i].lat;
       lng = geonamesData[i].lng;
@@ -61,5 +62,27 @@ app.get('/weather/:destinationId', async (req, res) => {
   const response = await fetch(apiUrl);
   const json = await response.json();
   // console.log('Response: ', json);
+  res.json(json);
+});
+
+// GET route for pixabay image
+app.get('/image/:destinationId', async (req, res) => {
+  const id = parseInt(req.params.destinationId);
+  let destination = '';
+  const geonamesData = cityData.geonames;
+
+  for (let i = 0; i < geonamesData.length; i++) {
+    console.log(`i: `, i);
+    if (geonamesData[i].geonameId === id) {
+      destination = geonamesData[i].name;
+      console.log(destination);
+      break;
+    }
+  }
+
+  const apiUrl = `https://pixabay.com/api/?key=${imgAPIKey}&q=${destination}&image_type=photo&category=places'`;
+  const response = await fetch(apiUrl);
+  const json = await response.json();
+  console.log('Response: ', json);
   res.json(json);
 });

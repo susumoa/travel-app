@@ -89,6 +89,7 @@ export const chooseDestinationCity = (e) => {
   const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationId = event.target.id;
   let weeatherData = {};
+  let imgData = {};
   if (destinationId !== 'city-list') {
     // console.log(destinationId);
     postWeatherData(destinationId)
@@ -97,9 +98,21 @@ export const chooseDestinationCity = (e) => {
       })
       .then(() => {
         document.getElementById('choose-city').setAttribute('hidden', '');
-        const deleteListElements = document.querySelector('ul');
-        deleteListElements.innerHTML = '';
-        Client.updateUIWithForecast({ start: startDateInput, end: endDateInput, length: daysBetweenDates, weatherData: weeatherData });
+        document.querySelector('ul').innerHTML = '';
+
+        postImageInfo(destinationId)
+          .then((data) => {
+            imgData = data;
+          })
+          .then(() => {
+            Client.updateUIWithForecast({
+              start: startDateInput,
+              end: endDateInput,
+              length: daysBetweenDates,
+              weatherData: weeatherData,
+              imgData: imgData.hits[0],
+            });
+          });
       });
   }
 };
@@ -107,6 +120,15 @@ export const chooseDestinationCity = (e) => {
 // Fetch weather data from Weatherbit
 export const postWeatherData = async function (destinationId) {
   const apiUrl = `http://localhost:8080/weather/${destinationId}`;
+  const response = await fetch(apiUrl);
+  const json = await response.json();
+  // console.log(json);
+  return json;
+};
+
+// Fetch image from Pixabay
+export const postImageInfo = async function (destinationId) {
+  const apiUrl = `http://localhost:8080/image/${destinationId}`;
   const response = await fetch(apiUrl);
   const json = await response.json();
   // console.log(json);
