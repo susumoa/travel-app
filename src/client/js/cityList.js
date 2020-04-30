@@ -15,4 +15,5 @@ export const createCityList = (data) => {
   }
   // reflow and repaint here
   document.getElementById('city-list').appendChild(fragment);
+  document.getElementById('choose-city').removeAttribute('hidden');
 };

@@ -30,7 +30,7 @@ export const handleSubmit = (e) => {
       .then((cities) => {
         postData(cities);
       })
-      .then(() => firstUIUpdate());
+      .then(() => updateUIWithCityData());
   }
 };
 
@@ -69,32 +69,43 @@ const postData = async (data) => {
   }
 };
 
-const firstUIUpdate = async () => {
+const updateUIWithCityData = async () => {
   const req = await fetch('http://localhost:8080/all');
   try {
     const allData = await req.json();
     // console.log('all data: ', allData);
     Client.createCityList(allData);
   } catch (error) {
-    console.log('error in firstUIUpdate', error);
+    console.log('error in updateUIWithCityData', error);
   }
 };
 
+// Allow user to choose the destination from the fetched list
 export const chooseDestinationCity = (e) => {
   e.preventDefault();
   const startDateInput = document.getElementById('start-date-input').value;
   const endDateInput = document.getElementById('end-date-input').value;
   const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationId = event.target.id;
+  let weeatherData = {};
   if (destinationId !== 'city-list') {
-    console.log(destinationId);
-    postWeatherData(destinationId);
+    // console.log(destinationId);
+    postWeatherData(destinationId)
+      .then((data) => {
+        weeatherData = data;
+      })
+      .then(() => {
+        document.getElementById('choose-city').setAttribute('hidden', '');
+        Client.updateUIWithForecast({ start: startDateInput, end: endDateInput, length: daysBetweenDates, weatherData: weeatherData });
+      });
   }
 };
 
+// Fetch weather data from Weatherbit
 export const postWeatherData = async function (destinationId) {
   const apiUrl = `http://localhost:8080/weather/${destinationId}`;
   const response = await fetch(apiUrl);
   const json = await response.json();
-  console.log(json);
+  // console.log(json);
+  return json;
 };
