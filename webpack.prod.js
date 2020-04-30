@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -28,5 +29,6 @@ module.exports = {
       template: './src/client/views/index.html',
       filename: './index.html',
     }),
+    new CopyWebpackPlugin([{ from: 'src/client/icons', to: 'icons' }]),
   ],
 };

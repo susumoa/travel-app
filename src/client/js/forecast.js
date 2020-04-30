@@ -16,6 +16,7 @@ export const updateUIWithForecast = (data) => {
     for (let i = 0; i < weatherData.data.length; i++) {
       if (weatherData.data[i].datetime === startDateForApi) {
         document.getElementById('forecast').innerHTML = `${weatherData.data[i].temp}°C`;
+        document.getElementById('weather-icon').src = `http://localhost:8080/icons/${weatherData.data[i].weather.icon}.png`;
         break;
       }
     }

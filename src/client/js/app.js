@@ -23,6 +23,7 @@ export const handleSubmit = (e) => {
   } else if (destinationInput.trim() === '') {
     alert('Please enter a city name');
   } else {
+    document.getElementById('forecast-info').setAttribute('hidden', '');
     // Geonames:
     // http://api.geonames.org/searchJSON?q=london&maxRows=10&username=susumoa
 
