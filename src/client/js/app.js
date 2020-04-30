@@ -9,13 +9,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
 export const handleSubmit = (e) => {
   e.preventDefault();
 
+  const startDateInput = document.getElementById('start-date-input').value;
+  const endDateInput = document.getElementById('end-date-input').value;
+  const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationInput = document.getElementById('destination-input').value;
 
-  getCityInfo(`http://api.geonames.org/searchJSON?q=${destinationInput}&maxRows=10&username=${username}`)
-    .then((cities) => {
-      postData(cities);
-    })
-    .then(() => firstUIUpdate());
+  if (!Client.dateChecker(startDateInput)) {
+    alert('Please enter the start date in DD/MM/YYYY form');
+  } else if (!Client.dateChecker(endDateInput)) {
+    alert('Please enter the end date in DD/MM/YYYY form');
+  } else if (!Client.checkIfEndDateIsLater(daysBetweenDates)) {
+    alert("Your end date is sooner that your start date! Sorry, time travel function isn't available.");
+  } else if (destinationInput.trim() === '') {
+    alert('Please enter a city name');
+  } else {
+    getCityInfo(`http://api.geonames.org/searchJSON?q=${destinationInput}&maxRows=10&username=${username}`)
+      .then((cities) => {
+        postData(cities);
+      })
+      .then(() => firstUIUpdate());
+  }
 };
 
 const getCityInfo = async (url) => {
@@ -68,6 +81,7 @@ export const chooseDestinationCity = (e) => {
   e.preventDefault();
   const startDateInput = document.getElementById('start-date-input').value;
   const endDateInput = document.getElementById('end-date-input').value;
+  const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationId = event.target.id;
   if (destinationId !== 'city-list') {
     console.log(destinationId);
