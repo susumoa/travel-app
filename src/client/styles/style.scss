@@ -11,7 +11,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 50%;
   margin: auto;
 }
 
@@ -64,6 +63,8 @@ ul {
 
     li {
       display: inline-block;
+      line-height: 2rem;
+      font-size: 20px;
       &:hover {
         opacity: 75%;
         cursor: pointer;
@@ -75,6 +76,22 @@ ul {
 
 figcaption {
   font-size: 0.8rem;
+
+  a:visited {
+    color: $color-fonts;
+  }
+
+  a:hover {
+    color: #ffacb7;
+  }
+}
+
+img {
+  max-width: 50vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 99%;
 }
 
 .holder {
@@ -84,12 +101,26 @@ figcaption {
 
 .forecast {
   section {
+    line-height: 2.5rem;
+    font-size: 20px;
     label {
       display: inline;
     }
 
     p {
       display: inline;
+    }
+
+    a {
+      color: $color-fonts;
+    }
+
+    a:visited {
+      color: $color-fonts;
+    }
+
+    a:hover {
+      color: #ffacb7;
     }
   }
 }
@@ -117,11 +148,12 @@ figcaption {
 #trip-length,
 #forecast {
   color: $color-fonts;
+  font-size: 20px;
 }
 
 #weather-icon {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 
 /* Reset style for HTML element on active to have no border*/

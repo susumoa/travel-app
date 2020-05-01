@@ -26,6 +26,7 @@ export const updateUIWithForecast = (data) => {
   document.getElementById('airbnb-link').href = `https://www.airbnb.co.uk/s/${
     destination.split(',')[0]
   }/homes?tab_id=all_tab&refinement_paths%5B%5D=%2Fhomes&checkin=${startDateForApi}&checkout=${endDateForLink}&source=structured_search_input_header&search_type=search_query`;
+  document.getElementById('forecast-day').innerHTML = `${start}`;
 
   // check if journey starts later than 16 days, due to Weatherbit API limitations, the forecast can only work for the next 16 days
   if (Client.differenceBetweenDates(todayForConverter, start) <= 16) {
