@@ -107,13 +107,14 @@ export const chooseDestinationCity = (e) => {
         imgData = imgInfo;
       })
       .then(() => {
+        const randomNum = Math.floor(Math.random() * imgData.hits.length) < 10 ? Math.floor(Math.random() * imgData.hits.length) : 0;
         return Client.updateUIWithForecast({
           start: startDateInput,
           end: endDateInput,
           length: daysBetweenDates,
           weatherData: weatherData,
           destination: destination,
-          imgData: imgData.hits[0],
+          imgData: imgData.hits[randomNum],
         });
       });
   }
