@@ -28,14 +28,12 @@ app.get('/', (req, res) => {
 
 // POST route, save city data
 app.post('/add', (req, res) => {
-  // console.log('cityData in /add: ', req.body);
   cityData = req.body;
   res.send(cityData);
 });
 
 // GET route for city data
 app.get('/all', (req, res) => {
-  // console.log('cityData in /all: ', cityData);
   res.send(cityData);
 });
 
@@ -47,7 +45,6 @@ app.get('/weather/:destinationId', async (req, res) => {
   const geonamesData = cityData.geonames;
 
   for (let i = 0; i < geonamesData.length; i++) {
-    // console.log(`i: `, i);
     if (geonamesData[i].geonameId === id) {
       lat = geonamesData[i].lat;
       lng = geonamesData[i].lng;
@@ -60,7 +57,6 @@ app.get('/weather/:destinationId', async (req, res) => {
   const response = await fetch(apiUrl);
   try {
     const json = await response.json();
-    // console.log('Response: ', json);
     res.json(json);
   } catch (err) {
     console.log('Error: ', err);
@@ -74,10 +70,8 @@ app.get('/image/:destinationId', async (req, res) => {
   const geonamesData = cityData.geonames;
 
   for (let i = 0; i < geonamesData.length; i++) {
-    // console.log(`i: `, i);
     if (geonamesData[i].geonameId === id) {
       destination = geonamesData[i].name;
-      //console.log(destination);
       break;
     }
   }
@@ -87,7 +81,6 @@ app.get('/image/:destinationId', async (req, res) => {
   const response = await fetch(apiUrl);
   try {
     const imgInfo = await response.json();
-    // console.log('Response in get img: ', imgInfo);
     res.json(imgInfo);
   } catch (err) {
     console.log('Error: ', err);
