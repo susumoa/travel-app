@@ -63,8 +63,8 @@ app.get('/weather/:destinationId', async (req, res) => {
 
   const apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lng}&key=${weatherAPIKey}`;
 
+  const response = await fetch(apiUrl);
   try {
-    const response = await fetch(apiUrl);
     const json = await response.json();
     // console.log('Response: ', json);
     res.json(json);
@@ -90,12 +90,13 @@ app.get('/image/:destinationId', async (req, res) => {
 
   const apiUrl = `https://pixabay.com/api/?key=${imgAPIKey}&q=${destination}&image_type=photo`;
 
+  const response = await fetch(apiUrl);
   try {
-    const response = await fetch(apiUrl);
     const imgInfo = await response.json();
     // console.log('Response in get img: ', imgInfo);
     res.json(imgInfo);
   } catch (err) {
     console.log('Error: ', err);
+    res.json({ total: 0, totalHits: 0, hits: [] });
   }
 });

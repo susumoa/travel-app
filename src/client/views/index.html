@@ -30,7 +30,7 @@
       </form>
 
       <div hidden id="choose-city" class="holder choose-city">
-        <h2>Choose one:</h2>
+        <h2>Choose your destination:</h2>
         <ul id="city-list"></ul>
       </div>
 
@@ -41,15 +41,23 @@
             <img id="destination-img" />
             <figcaption><a href="https://pixabay.com/">Source: Pixabay</a></figcaption>
           </figure>
-          <label for="start-date">Start date: </label>
-          <p id="start-date"></p>
-          <label for="end-date">End date: </label>
-          <p id="end-date"></p>
-          <label for="destination">Destination: </label>
-          <p id="destination"></p>
-          <label for="trip-length">Trip length: </label>
-          <p id="trip-length"></p>
-          <div class="forecast-info">
+          <section>
+            <label for="start-date">Start date: </label>
+            <p id="start-date"></p>
+          </section>
+          <section>
+            <label for="end-date">End date: </label>
+            <p id="end-date"></p>
+          </section>
+          <section>
+            <label for="destination">Destination: </label>
+            <p id="destination"></p>
+          </section>
+          <section>
+            <label for="trip-length">Trip length: </label>
+            <p id="trip-length"></p>
+          </section>
+            <div class="forecast-info">
             <h3>Forecast: </h3>
             <img id="weather-icon" />
             <p id="forecast"></p>

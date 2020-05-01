@@ -22,6 +22,16 @@ body {
 
 .entry {
   background: #f6f578;
+
+  section {
+    label {
+      display: inline;
+    }
+
+    p {
+      display: inline;
+    }
+  }
 }
 
 #start-date,

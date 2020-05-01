@@ -2,8 +2,7 @@ const username = 'susumoa';
 
 // Add event listeners
 document.addEventListener('DOMContentLoaded', (event) => {
-  document.getElementById('sumbit').addEventListener('click', handleSubmit);
-  document.getElementById('city-list').addEventListener('click', chooseDestinationCity);
+  Client.addListener();
 });
 
 export const handleSubmit = (e) => {
@@ -122,17 +121,25 @@ export const chooseDestinationCity = (e) => {
 // Fetch weather data from Weatherbit
 export const postWeatherData = async function (destinationId) {
   const apiUrl = `http://localhost:8080/weather/${destinationId}`;
-  const response = await fetch(apiUrl);
-  const json = await response.json();
-  // console.log(json);
-  return json;
+  try {
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    // console.log(json);
+    return json;
+  } catch (err) {
+    console.log('Error in post weather data: ', err);
+  }
 };
 
 // Fetch image from Pixabay
 export const postImageInfo = async function (destinationId) {
   const apiUrl = `http://localhost:8080/image/${destinationId}`;
   const response = await fetch(apiUrl);
-  const imgInfo = await response.json();
-  console.log('Post img info: ', imgInfo);
-  return imgInfo;
+  try {
+    const imgInfo = await response.json();
+    // console.log('Post img info: ', imgInfo);
+    return imgInfo;
+  } catch (err) {
+    console.log('Error in post img info: ', err);
+  }
 };
