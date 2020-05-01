@@ -24,12 +24,10 @@ export const handleSubmit = (e) => {
     alert('Please enter a city name');
   } else {
     document.getElementById('forecast-info').setAttribute('hidden', '');
-    // Geonames:
-    // http://api.geonames.org/searchJSON?q=london&maxRows=10&username=susumoa
 
     getCityInfo(`http://api.geonames.org/searchJSON?q=${destinationInput}&maxRows=10&username=${username}`)
       .then((cities) => {
-        postData(cities);
+        return postData(cities);
       })
       .then(() => updateUIWithCityData());
   }
@@ -44,6 +42,7 @@ const getCityInfo = async (url) => {
     if (data.totalResultsCount === 0) {
       alert('Please enter an existing city');
     } else {
+      // console.log('getCityInfo data: ', data);
       return data;
     }
   } catch (err) {
@@ -63,7 +62,7 @@ const postData = async (data) => {
 
   try {
     const newData = await res.json();
-    // console.log('newData: ', newData);
+    // console.log('postData newData: ', newData);
     return newData;
   } catch (err) {
     console.log('Error in postData: ', err);
@@ -84,35 +83,38 @@ const updateUIWithCityData = async () => {
 // Allow user to choose the destination from the fetched list
 export const chooseDestinationCity = (e) => {
   e.preventDefault();
+
   const startDateInput = document.getElementById('start-date-input').value;
   const endDateInput = document.getElementById('end-date-input').value;
   const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationId = event.target.id;
-  let weeatherData = {};
-  let imgData = {};
+  let weatherData;
+  let imgData;
+
+  document.getElementById('choose-city').setAttribute('hidden', '');
+  document.querySelector('ul').innerHTML = '';
+
   if (destinationId !== 'city-list') {
     // console.log(destinationId);
     postWeatherData(destinationId)
       .then((data) => {
-        weeatherData = data;
+        weatherData = data;
       })
       .then(() => {
-        document.getElementById('choose-city').setAttribute('hidden', '');
-        document.querySelector('ul').innerHTML = '';
-
-        postImageInfo(destinationId)
-          .then((data) => {
-            imgData = data;
-          })
-          .then(() => {
-            Client.updateUIWithForecast({
-              start: startDateInput,
-              end: endDateInput,
-              length: daysBetweenDates,
-              weatherData: weeatherData,
-              imgData: imgData.hits[0],
-            });
-          });
+        return postImageInfo(destinationId);
+      })
+      .then((imgInfo) => {
+        // console.log(imgInfo);
+        imgData = imgInfo;
+      })
+      .then(() => {
+        return Client.updateUIWithForecast({
+          start: startDateInput,
+          end: endDateInput,
+          length: daysBetweenDates,
+          weatherData: weatherData,
+          imgData: imgData.hits[0],
+        });
       });
   }
 };
@@ -130,7 +132,7 @@ export const postWeatherData = async function (destinationId) {
 export const postImageInfo = async function (destinationId) {
   const apiUrl = `http://localhost:8080/image/${destinationId}`;
   const response = await fetch(apiUrl);
-  const json = await response.json();
-  // console.log(json);
-  return json;
+  const imgInfo = await response.json();
+  console.log('Post img info: ', imgInfo);
+  return imgInfo;
 };

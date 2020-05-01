@@ -1,6 +1,8 @@
 export const updateUIWithForecast = (data) => {
   const { start, end, length, weatherData, imgData } = data;
   document.getElementById('forecast-info').removeAttribute('hidden');
+  // document.getElementById('choose-city').setAttribute('hidden', '');
+  // document.querySelector('ul').innerHTML = '';
 
   // console.log(start, end, length, weatherData);
 

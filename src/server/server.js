@@ -6,7 +6,7 @@ const cors = require('cors');
 const fetch = require('node-fetch');
 
 // Global variables
-let cityData = {};
+let cityData;
 const weatherAPIKey = process.env.WEATHER_API_KEY;
 const imgAPIKey = process.env.IMG_API_KEY;
 
@@ -34,11 +34,14 @@ app.get('/', (req, res) => {
 
 // POST route, save city data
 app.post('/add', (req, res) => {
+  // console.log('cityData in /add: ', req.body);
   cityData = req.body;
+  res.send(cityData);
 });
 
 // GET route for city data
 app.get('/all', (req, res) => {
+  // console.log('cityData in /all: ', cityData);
   res.send(cityData);
 });
 
@@ -59,10 +62,15 @@ app.get('/weather/:destinationId', async (req, res) => {
   }
 
   const apiUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lng}&key=${weatherAPIKey}`;
-  const response = await fetch(apiUrl);
-  const json = await response.json();
-  // console.log('Response: ', json);
-  res.json(json);
+
+  try {
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    // console.log('Response: ', json);
+    res.json(json);
+  } catch (err) {
+    console.log('Error: ', err);
+  }
 });
 
 // GET route for pixabay image
@@ -72,7 +80,7 @@ app.get('/image/:destinationId', async (req, res) => {
   const geonamesData = cityData.geonames;
 
   for (let i = 0; i < geonamesData.length; i++) {
-    console.log(`i: `, i);
+    // console.log(`i: `, i);
     if (geonamesData[i].geonameId === id) {
       destination = geonamesData[i].name;
       //console.log(destination);
@@ -80,9 +88,14 @@ app.get('/image/:destinationId', async (req, res) => {
     }
   }
 
-  const apiUrl = `https://pixabay.com/api/?key=${imgAPIKey}&q=${destination}&image_type=photo&category=places'`;
-  const response = await fetch(apiUrl);
-  const json = await response.json();
-  //console.log('Response: ', json);
-  res.json(json);
+  const apiUrl = `https://pixabay.com/api/?key=${imgAPIKey}&q=${destination}&image_type=photo`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const imgInfo = await response.json();
+    // console.log('Response in get img: ', imgInfo);
+    res.json(imgInfo);
+  } catch (err) {
+    console.log('Error: ', err);
+  }
 });
