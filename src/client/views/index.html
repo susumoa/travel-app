@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Travel App</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Roboto:400,700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="app">
@@ -58,7 +58,8 @@
             <p id="trip-length"></p>
           </section>
           <section>
-            <a id="airbnb-link">Find a place to stay</a>
+            <label for="airbnb-link">Stay: </label>
+            <a id="airbnb-link">Find a place</a>
           </section>
           <section>
               <label for="forecast">Forecast for </label>
@@ -69,5 +70,14 @@
         </div>
       </div>
     </div>
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/service-worker.js');
+          });
+      }
+  </script>
   </body>
 </html>

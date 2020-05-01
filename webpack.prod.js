@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -30,5 +31,6 @@ module.exports = {
       filename: './index.html',
     }),
     new CopyWebpackPlugin([{ from: 'src/client/icons', to: 'icons' }]),
+    new WorkboxPlugin.GenerateSW(),
   ],
 };
