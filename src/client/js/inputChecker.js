@@ -6,8 +6,10 @@ export const dateChecker = (date) => {
 
   if (newDate === '') {
     return false;
+  } else if (newDate.match(regex)) {
+    return true;
   } else {
-    return newDate.match(regex);
+    return false;
   }
 };
 
