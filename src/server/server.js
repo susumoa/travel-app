@@ -48,8 +48,8 @@ app.get('/all', (req, res) => {
 // GET route for weather forecast for 16 days
 app.get('/weather/:destinationId', async (req, res) => {
   const id = parseInt(req.params.destinationId);
-  let lat = '';
-  let lng = '';
+  let lat;
+  let lng;
   const geonamesData = cityData.geonames;
 
   for (let i = 0; i < geonamesData.length; i++) {

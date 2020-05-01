@@ -1,5 +1,5 @@
 export const updateUIWithForecast = (data) => {
-  const { start, end, length, weatherData, imgData } = data;
+  const { start, end, length, weatherData, destination, imgData } = data;
   document.getElementById('forecast-info').removeAttribute('hidden');
   // document.getElementById('choose-city').setAttribute('hidden', '');
   // document.querySelector('ul').innerHTML = '';
@@ -21,7 +21,7 @@ export const updateUIWithForecast = (data) => {
 
   document.getElementById('start-date').innerHTML = start;
   document.getElementById('end-date').innerHTML = end;
-  document.getElementById('destination').innerHTML = `${weatherData['city_name']}, ${weatherData['country_code']}`;
+  document.getElementById('destination').innerHTML = `${destination}`;
   document.getElementById('trip-length').innerHTML = `${length} ${length <= 1 ? 'day' : 'days'}`;
 
   if (Client.differenceBetweenDates(todayForConverter, start) <= 16) {

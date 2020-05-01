@@ -87,6 +87,7 @@ export const chooseDestinationCity = (e) => {
   const endDateInput = document.getElementById('end-date-input').value;
   const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationId = event.target.id;
+  const destination = event.target.innerHTML;
   let weatherData;
   let imgData;
 
@@ -97,6 +98,7 @@ export const chooseDestinationCity = (e) => {
     // console.log(destinationId);
     postWeatherData(destinationId)
       .then((data) => {
+        // console.log('Weather data: ', data);
         weatherData = data;
       })
       .then(() => {
@@ -112,6 +114,7 @@ export const chooseDestinationCity = (e) => {
           end: endDateInput,
           length: daysBetweenDates,
           weatherData: weatherData,
+          destination: destination,
           imgData: imgData.hits[0],
         });
       });
