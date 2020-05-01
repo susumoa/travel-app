@@ -10,6 +10,7 @@ export const createCityList = (data) => {
     const city = data.geonames[i].name;
     const country = data.geonames[i].countryCode;
     const id = data.geonames[i].geonameId;
+
     newElement.innerText = `${city}, ${country}`;
     newElement.setAttribute('id', `${id}`);
 
