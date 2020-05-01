@@ -1,4 +1,4 @@
-const app = require('./app');
+const app = require('./appServer');
 
 // Setup Server
 const port = 8080;

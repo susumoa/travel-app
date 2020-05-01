@@ -32,7 +32,7 @@ export const handleSubmit = (e) => {
   }
 };
 
-const getCityInfo = async (url) => {
+export const getCityInfo = async (url) => {
   const res = await fetch(url);
 
   try {
