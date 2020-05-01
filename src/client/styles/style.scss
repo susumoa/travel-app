@@ -2,6 +2,7 @@ $color-fonts: #6886c5;
 $color-app: #ffe0ac;
 $color-button: #ffacb7;
 $color-input: #f9f9f9;
+$color-link-hover: #ffacb7;
 $font-family: 'Roboto', sans-serif;
 
 body {
@@ -14,10 +15,27 @@ body {
   margin: auto;
 }
 
+.app {
+  display: block;
+  color: $color-fonts;
+  font-size: 20px;
+  font-family: $font-family;
+}
+
+.holder {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.headline {
+  font-size: 4rem;
+}
+
+// Styles for input
 label {
   display: block;
   font-weight: bold;
-  color: $color-fonts;
+  margin-bottom: 2px;
 }
 
 input {
@@ -50,9 +68,9 @@ button {
   }
 }
 
+// Styles for city list
 ul {
   list-style-type: none;
-  margin: 10px 0 0;
   padding: 0;
 
   a {
@@ -74,6 +92,7 @@ ul {
   }
 }
 
+// Styles for forecast
 figcaption {
   font-size: 0.8rem;
 
@@ -82,7 +101,7 @@ figcaption {
   }
 
   a:hover {
-    color: #ffacb7;
+    color: $color-link-hover;
   }
 }
 
@@ -92,11 +111,6 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 99%;
-}
-
-.holder {
-  text-align: center;
-  margin-top: 12px;
 }
 
 .forecast {
@@ -120,26 +134,9 @@ img {
     }
 
     a:hover {
-      color: #ffacb7;
+      color: $color-link-hover;
     }
   }
-}
-
-.title {
-  color: $color-fonts;
-  font-weight: 900;
-}
-
-.headline {
-  text-align: center;
-  font-size: 4rem;
-}
-
-#app {
-  display: block;
-  color: $color-fonts;
-  font-size: 20px;
-  font-family: $font-family;
 }
 
 #start-date,
@@ -158,8 +155,6 @@ img {
 
 /* Reset style for HTML element on active to have no border*/
 input:focus,
-select:focus,
-textarea:focus,
 button:focus {
   outline: none;
 }
