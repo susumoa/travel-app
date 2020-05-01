@@ -29,7 +29,7 @@ export const differenceBetweenDates = (startDate, endDate) => {
   return difference;
 };
 
-const dateConverter = (date) => {
+export const dateConverter = (date) => {
   const day = date.split('/')[0];
   const month = date.split('/')[1];
   const year = date.split('/')[2];
