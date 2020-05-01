@@ -1,5 +1,7 @@
 export const createCityList = (data) => {
   const cityList = data.geonames;
+
+  document.querySelector('ul').innerHTML = '';
   // uses a DocumentFragment
   const fragment = document.createDocumentFragment();
 

@@ -7,6 +7,7 @@ export const updateUIWithForecast = (data) => {
   // console.log(start, end, length, weatherData);
 
   const startDateForApi = `${start.split('/')[2]}-${start.split('/')[1]}-${start.split('/')[0]}`;
+  const endDateForLink = `${end.split('/')[2]}-${end.split('/')[1]}-${end.split('/')[0]}`;
   const today = new Date();
   const todayForConverter = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
 
@@ -23,6 +24,9 @@ export const updateUIWithForecast = (data) => {
   document.getElementById('end-date').innerHTML = end;
   document.getElementById('destination').innerHTML = `${destination}`;
   document.getElementById('trip-length').innerHTML = `${length} ${length <= 1 ? 'day' : 'days'}`;
+  document.getElementById('airbnb-link').href = `https://www.airbnb.co.uk/s/${
+    destination.split(',')[0]
+  }/homes?tab_id=all_tab&refinement_paths%5B%5D=%2Fhomes&checkin=${startDateForApi}&checkout=${endDateForLink}&source=structured_search_input_header&search_type=search_query`;
 
   if (Client.differenceBetweenDates(todayForConverter, start) <= 16) {
     for (let i = 0; i < weatherData.data.length; i++) {
@@ -37,3 +41,7 @@ export const updateUIWithForecast = (data) => {
     document.getElementById('forecast').innerHTML = 'Sorry, no forecast for this far in the future.';
   }
 };
+
+// https://www.airbnb.co.uk/s/Miskolc/homes?tab_id=home_tab&refinement_paths%5B%5D=%2Fhomes&source=structured_search_input_header&search_type=search_query&query=Miskolc
+
+// https://www.airbnb.co.uk/s/London/homes?tab_id=all_tab&refinement_paths%5B%5D=%2Fhomes&checkin=2020-05-05&checkout=2020-05-06&source=structured_search_input_header&search_type=search_query
