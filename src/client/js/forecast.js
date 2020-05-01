@@ -11,7 +11,6 @@ export const updateUIWithForecast = (data) => {
   if (imgData) {
     document.getElementById('destination-img').src = imgData.webformatURL;
     document.getElementById('destination-img').alt = `${imgData.tags} image`;
-    // document.getElementById('destination-img').srcset = 'https://pixabay.com/get/57e7d0454855a814f1dc84609629317d143dd7ed544c704c7d2779dc934fcc59_640.jpg';
   } else {
     document.getElementById('destination-img').src =
       'https://pixabay.com/get/57e7d0454855a814f1dc84609629317d143dd7ed544c704c7d2779dc934fcc59_640.jpg';

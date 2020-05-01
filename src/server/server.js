@@ -75,7 +75,7 @@ app.get('/image/:destinationId', async (req, res) => {
     console.log(`i: `, i);
     if (geonamesData[i].geonameId === id) {
       destination = geonamesData[i].name;
-      console.log(destination);
+      //console.log(destination);
       break;
     }
   }
@@ -83,6 +83,6 @@ app.get('/image/:destinationId', async (req, res) => {
   const apiUrl = `https://pixabay.com/api/?key=${imgAPIKey}&q=${destination}&image_type=photo&category=places'`;
   const response = await fetch(apiUrl);
   const json = await response.json();
-  console.log('Response: ', json);
+  //console.log('Response: ', json);
   res.json(json);
 });
