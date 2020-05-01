@@ -13,6 +13,7 @@ export const handleSubmit = (e) => {
   const daysBetweenDates = Client.differenceBetweenDates(startDateInput, endDateInput);
   const destinationInput = document.getElementById('destination-input').value;
 
+  // check if inputs are empty
   if (!Client.dateChecker(startDateInput)) {
     alert('Please enter the start date in DD/MM/YYYY form');
   } else if (!Client.dateChecker(endDateInput)) {
@@ -32,16 +33,15 @@ export const handleSubmit = (e) => {
   }
 };
 
+// fetch cities from Geonames API
 export const getCityInfo = async (url) => {
   const res = await fetch(url);
 
   try {
     const data = await res.json();
-    // console.log('data: ', data);
     if (data.totalResultsCount === 0) {
       alert('Please enter an existing city');
     } else {
-      // console.log('getCityInfo data: ', data);
       return data;
     }
   } catch (err) {
@@ -49,6 +49,7 @@ export const getCityInfo = async (url) => {
   }
 };
 
+// post cities to server
 const postData = async (data) => {
   const res = await fetch('http://localhost:8080/add', {
     method: 'POST',
@@ -61,25 +62,24 @@ const postData = async (data) => {
 
   try {
     const newData = await res.json();
-    // console.log('postData newData: ', newData);
     return newData;
   } catch (err) {
     console.log('Error in postData: ', err);
   }
 };
 
+// update UI with cities info from server
 const updateUIWithCityData = async () => {
   const req = await fetch('http://localhost:8080/all');
   try {
     const allData = await req.json();
-    // console.log('all data: ', allData);
     Client.createCityList(allData);
   } catch (error) {
     console.log('error in updateUIWithCityData', error);
   }
 };
 
-// Allow user to choose the destination from the fetched list
+// allow user to choose the destination from the fetched list
 export const chooseDestinationCity = (e) => {
   e.preventDefault();
 
@@ -94,18 +94,16 @@ export const chooseDestinationCity = (e) => {
   document.getElementById('choose-city').setAttribute('hidden', '');
   document.querySelector('ul').innerHTML = '';
 
+  // event listener listens to city-list too, need to exclude it
   if (destinationId !== 'city-list') {
-    // console.log(destinationId);
     postWeatherData(destinationId)
       .then((data) => {
-        // console.log('Weather data: ', data);
         weatherData = data;
       })
       .then(() => {
         return postImageInfo(destinationId);
       })
       .then((imgInfo) => {
-        // console.log(imgInfo);
         imgData = imgInfo;
       })
       .then(() => {
@@ -121,26 +119,24 @@ export const chooseDestinationCity = (e) => {
   }
 };
 
-// Fetch weather data from Weatherbit
+// fetch weather data from Weatherbit API
 export const postWeatherData = async function (destinationId) {
   const apiUrl = `http://localhost:8080/weather/${destinationId}`;
   try {
     const response = await fetch(apiUrl);
     const json = await response.json();
-    // console.log(json);
     return json;
   } catch (err) {
     console.log('Error in post weather data: ', err);
   }
 };
 
-// Fetch image from Pixabay
+// fetch image from Pixabay API
 export const postImageInfo = async function (destinationId) {
   const apiUrl = `http://localhost:8080/image/${destinationId}`;
   const response = await fetch(apiUrl);
   try {
     const imgInfo = await response.json();
-    // console.log('Post img info: ', imgInfo);
     return imgInfo;
   } catch (err) {
     console.log('Error in post img info: ', err);
