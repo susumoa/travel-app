@@ -12,8 +12,8 @@ This is the last project for Udacity's Front End Developer Nanodegree Program, a
 - run `touch .env`
 - add your API ID and API KEY to the `.env` file like this:
   ```
-  API_ID="********"
-  API_KEY="********************************"
+  WEATHER_API_KEY=="*************************"
+  IMG_API_KEY="*************************"
   ```
 - run `npm run build-prod`
 - start the server with `npm run start`

@@ -13,8 +13,7 @@ export const updateUIWithForecast = (data) => {
     document.getElementById('destination-img').src = imgData.webformatURL;
     document.getElementById('destination-img').alt = `${imgData.tags} image`;
   } else {
-    document.getElementById('destination-img').src =
-      'https://pixabay.com/get/57e7d0454855a814f1dc84609629317d143dd7ed544c704c7d2779dc934fcc59_640.jpg';
+    document.getElementById('destination-img').src = 'https://cdn.pixabay.com/photo/2016/10/20/18/35/sunrise-1756274_960_720.jpg';
     document.getElementById('destination-img').alt = 'image of earth';
   }
 
