@@ -134,21 +134,22 @@ figcaption {
   }
 }
 
-img {
-  max-width: 50vw;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 99%;
-}
-
 .forecast {
+  img {
+    max-width: 50vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 99%;
+  }
+
   section {
     line-height: 2.5rem;
     font-size: 20px;
     label {
       display: inline;
       color: #ff926b;
+      margin-right: 4px;
     }
 
     p {
