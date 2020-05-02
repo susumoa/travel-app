@@ -1,4 +1,4 @@
-import { handleSubmit, chooseDestinationCity } from './js/app';
+import { handleSubmit, chooseDestinationCity, addTodayDate } from './js/app';
 import { createCityList } from './js/cityList';
 import { dateChecker, checkIfEndDateIsLater, differenceBetweenDates } from './js/inputChecker';
 import { updateUIWithForecast } from './js/forecast';
@@ -15,4 +15,5 @@ export {
   differenceBetweenDates,
   updateUIWithForecast,
   addListener,
+  addTodayDate,
 };

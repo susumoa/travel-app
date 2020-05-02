@@ -5,6 +5,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
   Client.addListener();
 });
 
+export const addTodayDate = (e) => {
+  e.preventDefault();
+
+  document.getElementById('start-date-input').value = todayDate();
+};
+
+const todayDate = () => {
+  const today = new Date();
+  const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
+  const month = today.getMonth() + 1 < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1;
+  const year = today.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 export const handleSubmit = (e) => {
   e.preventDefault();
 
