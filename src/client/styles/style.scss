@@ -70,6 +70,33 @@ button {
   }
 }
 
+.start-date-input,
+#start-date-input {
+  position: relative;
+}
+
+#add-today {
+  position: absolute;
+  top: 9px;
+  display: inline-block;
+  margin-left: 10px;
+  width: 55px;
+  height: 40px;
+  font-size: 15px;
+}
+
+@media (min-width: 900px) {
+  #add-today {
+    position: absolute;
+    top: 9px;
+    display: inline-block;
+    margin-left: 10px;
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
 // Styles for city list
 ul {
   list-style-type: none;

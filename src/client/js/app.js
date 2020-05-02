@@ -11,7 +11,7 @@ export const addTodayDate = (e) => {
   document.getElementById('start-date-input').value = todayDate();
 };
 
-const todayDate = () => {
+export const todayDate = () => {
   const today = new Date();
   const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
   const month = today.getMonth() + 1 < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1;
