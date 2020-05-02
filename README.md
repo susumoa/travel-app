@@ -21,7 +21,7 @@ This is the last project for Udacity's Front End Developer Nanodegree Program, a
 
 ### API keys
 
-WEATHER_API_KEY is from Weatherbit. To get API key register [here](https://www.weatherbit.io/account/create)
+WEATHER_API_KEY is from Weatherbit. To get API key register [here](https://www.weatherbit.io/account/create)<br>
 IMG_API_KEY is from Pixabay. To get API key register [here](https://pixabay.com/accounts/register/)
 
 ## How to use
