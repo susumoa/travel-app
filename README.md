@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the last project for Udacity's Front End Developer Nanodegree Program, a Travel App.
+This is the last project for Udacity's Front End Developer Nanodegree Program, a Travel App, that gives you a weather forecast for your journey.
 
 ## To get started
 
@@ -10,9 +10,9 @@ This is the last project for Udacity's Front End Developer Nanodegree Program, a
 - `cd` into the new `travel-app` folder
 - run `npm install`
 - run `touch .env`
-- add your API ID and API KEY to the `.env` file like this:
+- add your WEATHER_API_KEY and IMG_API_KEY to the `.env` file like this:
   ```
-  WEATHER_API_KEY=="*************************"
+  WEATHER_API_KEY="*************************"
   IMG_API_KEY="*************************"
   ```
 - run `npm run build-prod`

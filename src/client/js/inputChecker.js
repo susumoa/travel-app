@@ -22,6 +22,7 @@ export const checkIfEndDateIsLater = (diff) => {
   }
 };
 
+// Return the difference between start and end dates
 export const differenceBetweenDates = (startDate, endDate) => {
   const start = dateConverter(startDate);
   const end = dateConverter(endDate);

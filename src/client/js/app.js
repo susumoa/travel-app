@@ -5,13 +5,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
   Client.addListener();
 });
 
+// handle click on today button
 export const addTodayDate = (e) => {
   e.preventDefault();
 
   document.getElementById('start-date-input').value = todayDate();
 };
 
-export const todayDate = () => {
+const todayDate = () => {
   const today = new Date();
   const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
   const month = today.getMonth() + 1 < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1;
@@ -19,6 +20,7 @@ export const todayDate = () => {
   return `${day}/${month}/${year}`;
 };
 
+// handle click on give me a forecast button
 export const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -48,7 +50,7 @@ export const handleSubmit = (e) => {
 };
 
 // fetch cities from Geonames API
-export const getCityInfo = async (url) => {
+const getCityInfo = async (url) => {
   const res = await fetch(url);
 
   try {
@@ -135,7 +137,7 @@ export const chooseDestinationCity = (e) => {
 };
 
 // fetch weather data from Weatherbit API
-export const getWeatherData = async function (destinationId) {
+const getWeatherData = async function (destinationId) {
   const apiUrl = `http://localhost:8080/weather/${destinationId}`;
   try {
     const response = await fetch(apiUrl);
@@ -147,7 +149,7 @@ export const getWeatherData = async function (destinationId) {
 };
 
 // fetch image from Pixabay API
-export const getImageInfo = async function (destinationId) {
+const getImageInfo = async function (destinationId) {
   const apiUrl = `http://localhost:8080/image/${destinationId}`;
   const response = await fetch(apiUrl);
   try {

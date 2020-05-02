@@ -3,6 +3,7 @@ export const updateUIWithForecast = (data) => {
 
   const { start, end, length, weatherData, destination, imgData } = data;
 
+  // create formatted dates
   const startDateForApi = `${start.split('/')[2]}-${start.split('/')[1]}-${start.split('/')[0]}`;
   const endDateForLink = `${end.split('/')[2]}-${end.split('/')[1]}-${end.split('/')[0]}`;
   const today = new Date();
