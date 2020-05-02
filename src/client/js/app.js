@@ -121,7 +121,6 @@ export const chooseDestinationCity = (e) => {
         imgData = imgInfo;
       })
       .then(() => {
-        // const randomNum = Math.floor(Math.random() * imgData.hits.length) < 10 ? Math.floor(Math.random() * imgData.hits.length) : 0;
         const randomNum = Math.floor(Math.random() * imgData.hits.length < 10 ? 10 : Math.random() * imgData.hits.length);
         return Client.updateUIWithForecast({
           start: startDateInput,
