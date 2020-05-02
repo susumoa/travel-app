@@ -54,7 +54,7 @@ export const getCityInfo = async (url) => {
   try {
     const data = await res.json();
     if (data.totalResultsCount === 0) {
-      alert('Please enter an existing city');
+      alert('Please enter an existing destination');
     } else {
       return data;
     }
@@ -110,18 +110,19 @@ export const chooseDestinationCity = (e) => {
 
   // event listener listens to city-list too, need to exclude it
   if (destinationId !== 'city-list') {
-    postWeatherData(destinationId)
+    getWeatherData(destinationId)
       .then((data) => {
         weatherData = data;
       })
       .then(() => {
-        return postImageInfo(destinationId);
+        return getImageInfo(destinationId);
       })
       .then((imgInfo) => {
         imgData = imgInfo;
       })
       .then(() => {
-        const randomNum = Math.floor(Math.random() * imgData.hits.length) < 10 ? Math.floor(Math.random() * imgData.hits.length) : 0;
+        // const randomNum = Math.floor(Math.random() * imgData.hits.length) < 10 ? Math.floor(Math.random() * imgData.hits.length) : 0;
+        const randomNum = Math.floor(Math.random() * imgData.hits.length < 10 ? 10 : Math.random() * imgData.hits.length);
         return Client.updateUIWithForecast({
           start: startDateInput,
           end: endDateInput,
@@ -135,7 +136,7 @@ export const chooseDestinationCity = (e) => {
 };
 
 // fetch weather data from Weatherbit API
-export const postWeatherData = async function (destinationId) {
+export const getWeatherData = async function (destinationId) {
   const apiUrl = `http://localhost:8080/weather/${destinationId}`;
   try {
     const response = await fetch(apiUrl);
@@ -147,7 +148,7 @@ export const postWeatherData = async function (destinationId) {
 };
 
 // fetch image from Pixabay API
-export const postImageInfo = async function (destinationId) {
+export const getImageInfo = async function (destinationId) {
   const apiUrl = `http://localhost:8080/image/${destinationId}`;
   const response = await fetch(apiUrl);
   try {
