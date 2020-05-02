@@ -19,6 +19,11 @@ This is the last project for Udacity's Front End Developer Nanodegree Program, a
 - start the server with `npm run start`
 - open `localhost:8080` in your browser or run `npm run build-dev`
 
+### API keys
+
+WEATHER_API_KEY is from Weatherbit. To get API key register [here](https://www.weatherbit.io/account/create)
+IMG_API_KEY is from Pixabay. To get API key register [here](https://pixabay.com/accounts/register/)
+
 ## How to use
 
 ### Input field
