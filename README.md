@@ -27,7 +27,7 @@ This is the last project for Udacity's Front End Developer Nanodegree Program, a
 
 On mobile:
 
-![input_mobile](./screenshots/input_mobile.png)
+![inputMobile](./screenshots/inputMobile.png)
 
 Enter your travel destination, start and end date and click the Give me a forecast button. The date input fields only allow the format DD/MM/YYYY. Giving invalid input in the date or destination field invokes an alert.
 
@@ -42,11 +42,11 @@ After the API call, a get request returns the destination list and the UI is upd
 
 ### City list
 
-![city-list](./screenshots/city-list.png)
+![cityList](./screenshots/cityList.png)
 
 On mobile:
 
-![city-list_mobile](./screenshots/city-list_mobile.png)
+![cityListMobile](./screenshots/cityListMobile.png)
 
 The UI shows the found destinations. You can choose the one you are travelling to by clicking on the destination.
 
@@ -63,7 +63,7 @@ Then the UI is updated again. First we delete the destination list, then show th
 
 On mobile:
 
-![journey_mobile](./screenshots/journey_mobile.png)
+![journeyMobile](./screenshots/journeyMobile.png)
 
 The UI showes the the journey information. It includes a picture of the destination from pixabay, start and end date, destination name, trip length, a link to airbnb to find accomodation and the weather forecast for the start day of the trip. The forecast is a weather icon and the temperature in Celsius. Due to Weatherbit API limitations, the forecast can only work for the next 16 days, in this case a template text is shown instead of the forecast.
 
