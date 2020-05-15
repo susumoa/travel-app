@@ -37,12 +37,6 @@ describe('checkIfEndDateIsLater tests', () => {
   });
 });
 
-describe('dateConverter test', () => {
-  test('DD/MM/YYYY returns 2020-04-30T23:00:00.000Z', () => {
-    expect(dateConverter('01/05/2020')).toEqual(new Date('05/01/2020'));
-  });
-});
-
 describe('differenceBetweenDates tests', () => {
   test('01/05/2020 start and 03/05/2020 end returns 2', () => {
     expect(differenceBetweenDates('01/05/2020', '03/05/2020')).toBe(2);

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="/icons/favicon.ico" />
     <title>Travel App</title>
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Roboto:400,700&display=swap" rel="stylesheet">
   </head>
@@ -15,12 +16,11 @@
       <form>
         <div class="holder start-date-input">
           <label for="start-date-input">Enter start date: </label>
-          <input type="text" id="start-date-input" placeholder="DD/MM/YYYY" />
-          <button id="add-today" type="button">Today</button>
+          <input type="date" id="start-date-input" />
         </div>
         <div class="holder end-date-input">
           <label for="end-date-input">Enter end date: </label>
-          <input type="text" id="end-date-input" placeholder="DD/MM/YYYY" />
+          <input type="date" id="end-date-input" />
         </div>
         <div class="holder destination-input">
           <label for="destination-input">Enter travel destination: </label>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <script>
+    <!-- <script>
       // Check that service workers are supported
       if ('serviceWorker' in navigator) {
           // Use the window load event to keep the page load performant
@@ -81,7 +81,7 @@
               navigator.serviceWorker.register('/service-worker.js');
           });
       }
-  </script>
+  </script> -->
 
   </body>
 </html>

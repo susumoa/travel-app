@@ -5,21 +5,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   Client.addListener();
 });
 
-// handle click on today button
-export const addTodayDate = (e) => {
-  e.preventDefault();
-
-  document.getElementById('start-date-input').value = todayDate();
-};
-
-const todayDate = () => {
-  const today = new Date();
-  const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
-  const month = today.getMonth() + 1 < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1;
-  const year = today.getFullYear();
-  return `${day}/${month}/${year}`;
-};
-
 // handle click on give me a forecast button
 export const handleSubmit = (e) => {
   e.preventDefault();
@@ -31,9 +16,9 @@ export const handleSubmit = (e) => {
 
   // check if inputs are empty
   if (!Client.dateChecker(startDateInput)) {
-    alert('Please enter the start date in DD/MM/YYYY form');
+    alert('Please enter the start date');
   } else if (!Client.dateChecker(endDateInput)) {
-    alert('Please enter the end date in DD/MM/YYYY form');
+    alert('Please enter the end date');
   } else if (!Client.checkIfEndDateIsLater(daysBetweenDates)) {
     alert("Your end date is sooner that your start date! Sorry, time travel function isn't available.");
   } else if (destinationInput.trim() === '') {
