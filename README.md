@@ -34,13 +34,11 @@ On mobile:
 
 ![inputMobile](./screenshots/inputMobile.png)
 
-Enter your travel destination, start and end date and click the Give me a forecast button. The date input fields only allow the format DD/MM/YYYY. Giving invalid input in the date or destination field invokes an alert.
-
-If your start date is today, you can click the Today button next to the start date input field, instead of typing.
+Enter your travel destination, start and end date and click the Give me a forecast button. The date input fields only allow the format dd/mm/yyyy. Giving invalid input in the date or destination field invokes an alert.
 
 #### In the background
 
-When clicking the submit buttont the dateChecker function checks if the date is valid and the end date is later or on the same day as the start date. It can take leap years in account.
+When clicking the submit buttont the dateChecker function checks if the date is valid and the end date is later or on the same day as the start date.
 Then an API call to Geonames fetches an object that contains a 10 items long list of the corresponding destinations and posts it in the servers `cityData` variable. `cityData` is overwritten in every call to prevent multiplying items.
 If the returned object's totalResultsCount is 0, an alert asks for an existing destination.
 After the API call, a get request returns the destination list and the UI is updated with it.
@@ -81,6 +79,6 @@ The airbnb link is created with template literals to include the destination, st
 ## To extend my project
 
 - I added an end date and displayed the length of the journey.
-- I added a button to fill in the start date with today's date.
+- I enabled the user to choose the destination from a list returned by the API.
 - I added a link to the journey information that brings the user to the Aribnb site. The site brings up available stays at the destination with the start date as check-in and end date as check-out date.
 - I incorporated weather icons into the forecast.
